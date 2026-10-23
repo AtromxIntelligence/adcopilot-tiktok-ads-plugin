@@ -30,7 +30,7 @@ Work in this order. Name accounts and containers by the display names the server
 1. `gtm_list_accounts`, then `gtm_list_containers`. If there is more than one container, ask which one is on the website the TikTok ads send people to.
 2. `gtm_list_workspaces`, then `gtm_list_tags` on the workspace the customer works in (usually "Default Workspace") and on the "AdCopilot" workspace if it exists.
 3. `gtm_list_triggers` for the same workspaces, to turn the firing trigger ids on each tag into names. Built-in triggers are not in that list: `2147479553` is Tag Manager's built-in All Pages trigger.
-4. `gtm_list_version_headers`: the container's saved versions, their names and what each holds.
+4. `gtm_list_version_headers`: the container's saved versions, their names and how many tags, triggers and variables each holds.
 
 Recognise the Pixel by what a tag holds, never by its name alone:
 
@@ -60,8 +60,8 @@ Propose the fix and wait for the yes. Never ask for a TikTok password or an acce
 
 1. Ask the customer to copy their own base code from TikTok's Events Manager and paste it here. It has their pixel ID in it. List the tags first: a container that already carries a base-code tag needs no second one, because two send every page view twice.
 2. On a yes, stage the base code with `gtm_create_tag` on the container: a Custom HTML tag (type `html`) named "TikTok Pixel - base code", with the pasted code as its `html` parameter and `supportDocumentWrite` set to `false`, firing on All Pages (`2147479553`).
-3. For one action that matters, stage an event tag on the page only a finished action reaches (a thank-you page, say). Create the trigger with `gtm_create_trigger`: type `domReady` (DOM Ready), filtered on the Page Path containing the thank-you page's path. Then create the event tag with `gtm_create_tag`: a Custom HTML tag whose HTML is a script calling `ttq.track` with the event name, firing on that trigger. DOM Ready comes after the Page View the base code fires on, so the base code has already run when the event is sent.
-4. The filter reads Tag Manager's Page Path variable. If that built-in variable is off in the container, the trigger matches nothing and never says so: check with `gtm_list_built_in_variables`, and if it is missing propose `gtm_enable_built_in_variable` like any other change.
+3. For one action that matters, stage an event tag on the page only a finished action reaches (a thank-you page, say). Create the trigger with `gtm_create_trigger`: type `domReady` (DOM Ready), filtered on the Page Path containing the thank-you page's path: its `filter` is one condition of type `contains` whose parameters are `arg0`, the template value `{{Page Path}}`, and `arg1`, the path. Then create the event tag with `gtm_create_tag`: a Custom HTML tag whose HTML is a script calling `ttq.track` with the event name, firing on that trigger. DOM Ready comes after the Page View the base code fires on, so the base code has already run when the event is sent.
+4. The filter reads Tag Manager's Page Path variable. If that built-in variable is off in the workspace, the trigger cannot work: check with `gtm_list_built_in_variables` on the "AdCopilot" workspace once the trigger is staged there, and if Page Path is missing propose `gtm_enable_built_in_variable` like any other change.
 5. Read it back: `gtm_list_tags` and `gtm_list_triggers` on the "AdCopilot" workspace (its path is in `gtm_list_workspaces`). Give the customer the workspace's address as the server returns it, and say that publishing is theirs: in Tag Manager, Submit, then Publish (at the time of writing). Nothing fires until they do. To undo before then, they leave it unpublished or remove the tag and trigger in Tag Manager themselves.
 
 Choose the event name with the customer: `CompleteRegistration` for a sign-up. For other actions, TikTok has been renaming some standard events, so read the exact name off the customer's own Events Manager rather than assuming. **Say what it counts:** a thank-you page view counts page views, including reloads, not proven new sign-ups.
@@ -81,9 +81,9 @@ Say each step in a sentence and what breaks if it is skipped:
 
 ## Facts checked 23 October 2026
 
-- TikTok's published Tag Manager template page (its README, changed 8 September 2026): base code goes in a Custom HTML tag on All Pages; the template needs the base code installed first; the template reads Google Analytics 4 events from the data layer and converts them into TikTok events; Events Manager's guided setup and Event Builder are TikTok's recommended routes.
+- TikTok's published Tag Manager template (its README, and its template file as changed on 8 September 2026): base code goes in a Custom HTML tag on All Pages; the template needs the base code installed first; the template reads Google Analytics 4 events from the data layer and converts them into TikTok events; Events Manager's guided setup and Event Builder are TikTok's recommended routes.
 - The base code loads its script from `analytics.tiktok.com` (the file is `/i18n/pixel/events.js` at the time of writing) and calls `ttq.load` with the pixel ID.
-- The standard event names TikTok's template knows: ViewContent, ClickButton, Search, AddToWishlist, AddToCart, InitiateCheckout, AddPaymentInfo, CompletePayment, PlaceAnOrder, Contact, Download, SubmitForm, CompleteRegistration, Subscribe, CustomizeProduct, FindLocation, Schedule, ApplicationApproval, StartTrial, SubmitApplication and Purchase.
+- The standard event names TikTok's template file knows: ViewContent, ClickButton, Search, AddToWishlist, AddToCart, InitiateCheckout, AddPaymentInfo, CompletePayment, PlaceAnOrder, Contact, Download, SubmitForm, CompleteRegistration, Subscribe, CustomizeProduct, FindLocation, Schedule, ApplicationApproval, StartTrial, SubmitApplication and Purchase.
 
 For anything not on that list, TikTok's own Events Manager and help are the referee: say so rather than answering from memory.
 

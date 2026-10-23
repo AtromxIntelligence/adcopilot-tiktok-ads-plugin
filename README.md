@@ -2,7 +2,7 @@
 
 TikTok Ads help in your AI client, through AdCopilot. Today it checks your TikTok Pixel in Google Tag Manager, reports your TikTok traffic and conversions in Google Analytics (GA4), finds UTM mistakes, guides conversion setup, plans campaigns, drafts video ad scripts and ad text, and does the budget pacing math. Direct access to your TikTok ad account comes when TikTok approves AdCopilot's API access; there is no date yet. Every change is proposed first and made only on your yes.
 
-Made by Atromx Intelligence (https://adcopilot.cloud). Not affiliated with or endorsed by TikTok Ltd. TikTok and TikTok Ads are trademarks of TikTok Ltd. This plugin is not related to other products named AdCopilot.
+Made by Atromx Intelligence (https://adcopilot.cloud). Not affiliated with or endorsed by TikTok. TikTok and TikTok Ads are trademarks of their owner. This plugin is not related to other products named AdCopilot.
 
 The plugin is free (MIT). The AdCopilot connector is a hosted service: Free plan available; paid plans on https://adcopilot.cloud/pricing.
 

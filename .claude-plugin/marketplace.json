@@ -9,7 +9,7 @@
     {
       "name": "adcopilot-tiktok-ads",
       "source": "./",
-      "description": "TikTok Ads help in your AI client, through AdCopilot: Pixel checks in Google Tag Manager, TikTok traffic in GA4, UTM hygiene, plans, scripts and budget math. Reading the TikTok ad account itself comes when TikTok approves AdCopilot's API access.",
+      "description": "TikTok Ads help in your AI client, through AdCopilot: Pixel checks in Google Tag Manager, TikTok traffic in GA4, UTM hygiene, plans, scripts and budget math. Reading the TikTok ad account itself comes when TikTok approves AdCopilot's API access; there is no date yet.",
       "category": "Marketing"
     }
   ]
