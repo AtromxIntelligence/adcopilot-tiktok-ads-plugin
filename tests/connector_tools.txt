@@ -1,4 +1,4 @@
-# The AdCopilot connector's tool list at v2.44.1: the Google Ads read tools and writes, the Search Console, Analytics 4 and Tag Manager sets, get_org_context and save_org_context. Left out: shopping_product_issues, lsa_leads and lsa_rate_lead, which are switched off in production.
+# The AdCopilot connector's tool list at v2.44.1: the Google Ads read tools and writes, the Search Console, Analytics 4 and Tag Manager sets, get_org_context and save_org_context. Left out: shopping_product_issues, lsa_leads and lsa_rate_lead, which are not served to every workspace and which this plugin never names.
 account_health_score
 add_account_negatives
 add_assets_to_asset_group

@@ -58,7 +58,7 @@ CONNECTOR_TOOLS = {
     line.strip() for line in (ROOT / "tests" / "connector_tools.txt").read_text(encoding="utf-8").splitlines()
     if line.strip() and not line.startswith("#")
 }
-# Tools the connector has but has switched off in production: never named.
+# Tools the connector has but does not serve to every workspace: never named.
 SWITCHED_OFF = {"shopping_product_issues", "lsa_leads", "lsa_rate_lead"}
 PREFIXES = ("gsc_", "ga4_", "gtm_")
 BACKTICKED = re.compile(r"`([a-z][a-z0-9]*(?:_[a-z0-9]+)+)`")

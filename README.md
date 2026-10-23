@@ -67,7 +67,7 @@ Four skills, which Claude draws on when the conversation calls for them:
 - Change anything without your yes. Every change is proposed first, with what it changes and how to undo it.
 - Read or change your TikTok ad account. That is the "Later" above.
 - Ask for your TikTok password or access token.
-- Quote benchmarks or promise results. Every number is a tool's number or one you gave it.
+- Quote benchmarks or promise results. Every number is a tool's number, one you gave it, or arithmetic on yours with the working shown.
 
 ## Platform facts, checked 23 October 2026
 

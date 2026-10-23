@@ -28,7 +28,7 @@ If Google Analytics is not connected, say what connecting it unlocks, in the ser
 ## Read
 
 1. **Which property.** `ga4_list_account_summaries`, then use the exact `properties/<id>` it returns. If there is more than one, ask which is the website the TikTok traffic lands on, by display name.
-2. **Which names it has.** `ga4_get_metadata` for that property. Use the names it returns. The usual ones are the dimensions `sessionSourceMedium`, `sessionCampaignName` and `sessionDefaultChannelGroup`, and the metrics `sessions`, `engagedSessions`, `keyEvents` and `totalRevenue`. An older property may list `conversions` where `keyEvents` is. If a name is not in the metadata, say so and do not guess one.
+2. **Which names it has.** `ga4_get_metadata` for that property. Use the names it returns. The usual ones are the dimensions `sessionSourceMedium`, `sessionCampaignName` and `sessionDefaultChannelGroup`, and the metrics `sessions`, `engagedSessions`, `keyEvents` and `totalRevenue`. If the metadata lists `conversions` and not `keyEvents`, use `conversions`. If a name is not in the metadata, say so and do not guess one.
 3. **The window.** Analytics says its data can take 24 to 48 hours to settle (checked 23 October 2026), so end the window two days before today, use 28 days unless the customer names a period, and say which dates you read. Pass `start_date` and `end_date` as `YYYY-MM-DD`.
 4. **By source.** `ga4_run_report` with the dimensions `sessionSourceMedium` and `sessionDefaultChannelGroup` and the metrics above, with `limit` set high (1000). The tool has no filter, so read every row and keep the ones whose source contains `tiktok` in any spelling or case. If the rows returned equal the limit, say the list is cut and the TikTok rows may be incomplete.
 5. **By campaign.** The same call with `sessionSourceMedium` and `sessionCampaignName`.
@@ -37,7 +37,7 @@ If Google Analytics is not connected, say what connecting it unlocks, in the ser
 ## Say, in sentences
 
 - TikTok sessions, how many were engaged, key events, and revenue if there is any. No revenue means no purchase event with a value reaches Analytics, not that nothing sold.
-- Where the TikTok traffic sits: Paid Social, Organic Social, Referral, Direct or Unassigned.
+- Where the TikTok traffic sits: Paid Social, Organic Social, Paid Shopping, Paid Other, Referral, Direct or Unassigned.
 - The top campaigns, and how much sits under a campaign of `(not set)`.
 - One plain line on why the two reports disagree. Analytics counts the sessions it recorded, by that session's source. TikTok Ads Manager counts clicks and conversions by its own attribution settings. The two will not match, and neither is wrong. Never "reconcile" them by adjusting a figure.
 - If the customer pastes TikTok spend or clicks, show the arithmetic against the Analytics sessions or key events (cost per session, cost per key event), and say that clicks are not sessions.
@@ -48,7 +48,8 @@ Google's rules, checked 23 October 2026 against Google's own help pages:
 
 - Analytics is case sensitive: `utm_source=google` and `utm_source=Google` are different sources. The same holds for `tiktok` and `TikTok`.
 - `utm_source` names where the traffic comes from, `utm_medium` the kind of marketing, `utm_campaign` the individual campaign, `utm_content` tells apart ads or links within a campaign, and `utm_term` is for paid search keywords.
-- A session lands in the Paid Social channel when its source is in Google's list of social sites and its medium matches `^(.*cp.*|ppc|retargeting|paid.*)$`. It lands in Organic Social when the source is in that list, or when the medium is one of social, social-network, social-media, sm, social network or social media. When no rule matches, Analytics uses Unassigned. Google keeps its list of social sites in a downloadable spreadsheet, so whether `tiktok` is on it is something the customer's own channel column shows: traffic tagged `paid_social` that lands in Paid Social is recognised, and tagged traffic that lands in Unassigned or Referral is not.
+- A session lands in the Paid Social channel when its source is in Google's list of social sites and its medium matches `^(.*cp.*|ppc|retargeting|paid.*)$`. It lands in Organic Social when the source is in that list, or when the medium is one of social, social-network, social-media, sm, social network or social media. When no rule matches, Analytics uses Unassigned. Google's downloadable list of sources names `tiktok` and `tiktok.com` as social sites, and the channel rules themselves ignore case.
+- Analytics tries Paid Shopping before Paid Social. A session with a paid medium whose campaign name contains `shop` or `shopping` (Google's regex is `^(.*(([^a-df-z]|^)shop|shopping).*)$`) lands in Paid Shopping, the same words send unpaid traffic to Organic Shopping, and a campaign name containing `cross-network` lands in Cross-network. Keep those words out of TikTok campaign names. The customer's own channel column is the referee: traffic tagged `paid_social` that lands in Paid Social is recognised, and tagged traffic that lands anywhere else is not.
 
 What to look for in the customer's own rows, and say only what the rows show:
 
