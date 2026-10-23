@@ -20,6 +20,6 @@ If the connector answers but reports nothing connected, that is the server worki
 Where the sign-in happens depends on the surface:
 
 - **claude.ai, Cowork and the desktop app:** open this plugin from the plugin list, then its Connectors tab, and connect `adcopilot` there. There is no `/mcp` on those surfaces. Do not offer "Add custom connector": the plugin already brings the connector.
-- **Claude Code:** `/mcp` lists the connector once, and the customer signs in there. If it appears under the name of another AdCopilot plugin, that is expected: every AdCopilot plugin points at the same connector, Claude Code keeps one copy, and there is one sign-in. If Claude asks them to sign in again after they remove an AdCopilot plugin, they run `/mcp` and sign in once.
+- **Claude Code:** `/mcp` lists the connector once, and the customer signs in there. If it appears under the name of another AdCopilot plugin, that is expected. There is one connector and one AdCopilot account whichever AdCopilot plugins are added. In Claude Code, `/mcp` lists it once, under whichever AdCopilot plugin loaded first, and the sign-in belongs to that entry. If Claude asks for a sign-in again after an AdCopilot plugin was added or removed, run `/mcp` and sign in once.
 
 End with the one next step and why it fits: the check command to look at the Pixel and the traffic together, or the plan command to plan a campaign. This plugin schedules nothing and makes no daily-check offer.

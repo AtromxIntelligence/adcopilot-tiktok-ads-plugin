@@ -43,7 +43,7 @@ Signing in links your AdCopilot workspace, so you need an AdCopilot account. You
 
 ## Already use another AdCopilot plugin?
 
-One connector, one sign-in, whichever AdCopilot plugins you add. On claude.ai, Cowork and the desktop app, Claude links a connector by its URL, so a second AdCopilot plugin's Connectors tab should already read Connected. In Claude Code, `/mcp` shows the connector once, under whichever AdCopilot plugin loaded first, and that is expected. If Claude asks you to sign in again after you remove an AdCopilot plugin, run `/mcp` and sign in once.
+There is one connector and one AdCopilot account, whichever AdCopilot plugins you add. Every AdCopilot plugin points at the same address, so your AI client treats them as one connector. In Claude Code, `/mcp` shows the connector once, under whichever AdCopilot plugin loaded first, and the sign-in belongs to that entry. If Claude asks you to sign in again after you add or remove an AdCopilot plugin, run `/mcp` and sign in once.
 
 ## What you get
 
