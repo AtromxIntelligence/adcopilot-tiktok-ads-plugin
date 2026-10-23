@@ -1,0 +1,16 @@
+{
+  "name": "adcopilot-tiktok-ads-plugin",
+  "description": "AdCopilot for TikTok Ads: TikTok Pixel checks in Google Tag Manager, TikTok traffic in Google Analytics (GA4), campaign plans, video script and ad text drafts, and budget pacing math.",
+  "owner": {
+    "name": "Atromx Intelligence",
+    "url": "https://adcopilot.cloud"
+  },
+  "plugins": [
+    {
+      "name": "adcopilot-tiktok-ads",
+      "source": "./",
+      "description": "TikTok Ads help in your AI client, through AdCopilot: Pixel checks in Google Tag Manager, TikTok traffic in GA4, UTM hygiene, plans, scripts and budget math. Reading the TikTok ad account itself comes when TikTok approves AdCopilot's API access.",
+      "category": "Marketing"
+    }
+  ]
+}
