@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 NAME = 'adcopilot-tiktok-ads'
 REPO = 'adcopilot-tiktok-ads-plugin'
 DISPLAY_NAME = 'AdCopilot for TikTok Ads'
-DESCRIPTION = "TikTok Ads help in your AI client, through AdCopilot. Today it checks your TikTok Pixel in Google Tag Manager, reports TikTok traffic and conversions in Google Analytics (GA4) by source, medium and campaign, finds UTM mistakes, guides conversion setup, plans campaigns, drafts video ad scripts and ad text, and does the budget pacing math. Direct access to your TikTok ad account comes when TikTok approves AdCopilot's API access; there is no date yet. Every change is proposed first and made only on your yes. Made by Atromx Intelligence, not by TikTok."
+DESCRIPTION = "TikTok Ads help in your AI client, through AdCopilot. Today it checks your TikTok Pixel in Google Tag Manager, reports TikTok traffic and conversions in Google Analytics (GA4) by source, medium and campaign, finds UTM mistakes, guides conversion setup, plans campaigns, drafts video ad scripts and ad text, and does the budget pacing math. It does not read your TikTok ad account. Every change is proposed first and made only on your yes. Made by Atromx Intelligence, not by TikTok."
 KEYWORDS = ['tiktok-ads',
  'tiktok-advertising',
  'tiktok-pixel',
@@ -80,6 +80,7 @@ class PluginJson(unittest.TestCase):
 
     def test_version_is_semver(self):
         self.assertRegex(self.plugin["version"], SEMVER_RE)
+        self.assertEqual(self.plugin["version"], "0.1.1")
 
     def test_description(self):
         d = self.plugin["description"]
@@ -87,10 +88,11 @@ class PluginJson(unittest.TestCase):
         self.assertLessEqual(len(d), 620)
         self.assertTrue(d.endswith("Made by Atromx Intelligence, not by TikTok."), d)
         # The plain statement the platform plugins owe: what works today, and
-        # that direct ad-account access waits for the platform's approval.
+        # that the ad account is not read. It promises nothing about later.
         self.assertIn("Today it checks", d)
-        self.assertIn("approves AdCopilot's API access", d)
-        self.assertIn("no date", d)
+        self.assertIn("It does not read your TikTok ad account.", d)
+        self.assertNotIn("approves", d)
+        self.assertNotIn("no date", d)
         self.assertIn("proposed first and made only on your yes", d)
 
     def test_author_and_links(self):
@@ -156,6 +158,9 @@ class Marketplace(unittest.TestCase):
         # The directory-listing fields belong in plugin.json, and validate
         # reports them in a marketplace entry as unknown.
         self.assertEqual(sorted(entry), ["category", "description", "name", "source"])
+        # The ad account is said not to be read in the same words as in the manifest.
+        self.assertTrue(entry["description"].endswith("It does not read your TikTok ad account."),
+                        entry["description"])
 
 
 class ReadmeAndVersion(unittest.TestCase):

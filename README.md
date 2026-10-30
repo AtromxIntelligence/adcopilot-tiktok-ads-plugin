@@ -1,6 +1,6 @@
 # AdCopilot for TikTok Ads
 
-TikTok Ads help in your AI client, through AdCopilot. Today it checks your TikTok Pixel in Google Tag Manager, reports your TikTok traffic and conversions in Google Analytics (GA4), finds UTM mistakes, guides conversion setup, plans campaigns, drafts video ad scripts and ad text, and does the budget pacing math. Direct access to your TikTok ad account comes when TikTok approves AdCopilot's API access; there is no date yet. Every change is proposed first and made only on your yes.
+TikTok Ads help in your AI client, through AdCopilot. Today it checks your TikTok Pixel in Google Tag Manager, reports your TikTok traffic and conversions in Google Analytics (GA4), finds UTM mistakes, guides conversion setup, plans campaigns, drafts video ad scripts and ad text, and does the budget pacing math. It does not read your TikTok ad account. Every change is proposed first and made only on your yes.
 
 Made by Atromx Intelligence (https://adcopilot.cloud). Not affiliated with or endorsed by TikTok. TikTok and TikTok Ads are trademarks of their owner. This plugin is not related to other products named AdCopilot.
 
@@ -14,7 +14,7 @@ The plugin is free (MIT). The AdCopilot connector is a hosted service: Free plan
 - **Guides conversion setup**, from naming the one action that counts to testing it with TikTok's own tools.
 - **Plans, drafts and does the arithmetic itself.** Campaign plans, vertical video scripts with a hook, shot lists, on-screen text, ad text and call-to-action variants, and budget pacing math. Claude writes these. AdCopilot reads no TikTok data for them, and the budget skill uses no tool at all.
 
-**Later:** reading your TikTok ad account, when TikTok approves AdCopilot's API access. There is no date. Nothing here reads or changes a TikTok ad account today; when that arrives, it will come as an update to this plugin.
+**Not read:** your TikTok ad account. It does not read your TikTok ad account, and nothing here changes one.
 
 ## Install
 
@@ -65,7 +65,7 @@ Four skills, which Claude draws on when the conversation calls for them:
 - Publish Tag Manager. Changes are staged in the "AdCopilot" workspace, and you publish.
 - Delete anything. None of these skills has a delete tool to use.
 - Change anything without your yes. Every change is proposed first, with what it changes and how to undo it.
-- Read or change your TikTok ad account. That is the "Later" above.
+- Read or change your TikTok ad account. That is the "Not read" line above.
 - Ask for your TikTok password or access token.
 - Quote benchmarks or promise results. Every number is a tool's number, one you gave it, or arithmetic on yours with the working shown.
 
@@ -83,6 +83,8 @@ The plugin is instructions only: it runs no code and sends nothing anywhere itse
 - Something wrong with the connector (sign-in, a tool call, your account): support@adcopilot.cloud.
 
 ## Version
+
+**0.1.1 (2026-10-31, written against AdCopilot v2.44.0, live since 2026-10-22)** Text only: every sentence about your TikTok ad account now says only that it does not read it. The skills, commands, tools and connector are as in 0.1.0.
 
 **0.1.0 (2026-10-23, written against AdCopilot v2.44.0, live since 2026-10-22)** First release: four skills (`tiktok-ads-tracking`, `tiktok-ads-traffic`, `tiktok-ads-plan`, `tiktok-ads-budget`), three commands (`setup`, `check`, `plan`) and the connector registration for `https://mcp.adcopilot.cloud/mcp`. Every tool the skills name is in the connector's tool list for that version. The structural tests and `claude plugin validate --strict` pass. The skills have not yet been run against a live Tag Manager container that carries a TikTok Pixel, so read the first answers as reviewed text, not as field-tested. Reading a TikTok ad account is not in this version.
 

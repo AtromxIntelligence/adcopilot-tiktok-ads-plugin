@@ -12,7 +12,7 @@ What is held here:
 - the first call carries this plugin's marker, `claude-plugin/<name>/<version>`,
   and no other form of it;
 - every skill holds the approval paragraph, and every skill and `/setup` says
-  what works today and what comes later;
+  what works today and that the TikTok ad account is not read;
 - the README holds the trademark line and enough words.
 
 Stdlib only; no environment variable is read.
@@ -29,7 +29,7 @@ NAME = PLUGIN["name"]
 VERSION = PLUGIN["version"]
 MARKER = "claude-plugin/%s/%s" % (NAME, VERSION)
 
-TODAY_LATER = "Today AdCopilot can check your TikTok Pixel and stage tags in Google Tag Manager, report your TikTok traffic and key events in Google Analytics (GA4), find UTM mistakes, guide your conversion setup, plan campaigns, draft video scripts and ad text, and do the budget pacing math. It cannot yet read your TikTok ad account: that arrives when TikTok approves AdCopilot's API access, and no date is promised."
+TODAY_LATER = "Today AdCopilot can check your TikTok Pixel and stage tags in Google Tag Manager, report your TikTok traffic and key events in Google Analytics (GA4), find UTM mistakes, guide your conversion setup, plan campaigns, draft video scripts and ad text, and do the budget pacing math. It does not read your TikTok ad account."
 APPROVAL = '**Every change is proposed first.** Say what it changes and how to undo it, and make it only after the customer\'s explicit yes in this conversation. Changes in Tag Manager are staged in the "AdCopilot" workspace and never published: publishing is the customer\'s click in Tag Manager. Nothing is ever deleted. Every number is a tool\'s number or a figure the customer gave you, never an invented one.'
 
 # The tools each skill names, exactly: a skill that names fewer has dropped a
@@ -191,17 +191,17 @@ class Honesty(unittest.TestCase):
             text = (ROOT / "skills" / name / "SKILL.md").read_text(encoding="utf-8")
             self.assertIn(APPROVAL, text, name)
 
-    def test_every_skill_and_setup_says_what_works_today_and_what_comes_later(self):
+    def test_every_skill_and_setup_says_what_works_today_and_that_the_ad_account_is_not_read(self):
         for name in SKILL_TOOLS:
             text = (ROOT / "skills" / name / "SKILL.md").read_text(encoding="utf-8")
             self.assertEqual(text.count(TODAY_LATER), 1, name)
         setup = (ROOT / "commands" / "setup.md").read_text(encoding="utf-8")
         self.assertEqual(setup.count(TODAY_LATER), 1)
 
-    def test_the_sentence_is_plain_about_the_gap(self):
-        self.assertIn("cannot yet read your TikTok ad account", TODAY_LATER)
-        self.assertIn("approves AdCopilot's API access", TODAY_LATER)
-        self.assertIn("no date is promised", TODAY_LATER)
+    def test_the_sentence_is_plain_about_the_gap_and_promises_nothing_about_later(self):
+        self.assertTrue(TODAY_LATER.endswith(" It does not read your TikTok ad account."), TODAY_LATER)
+        self.assertNotIn("approves", TODAY_LATER)
+        self.assertNotIn("no date", TODAY_LATER)
 
     def test_planning_and_budget_say_that_adcopilot_reads_no_tiktok_data(self):
         for name in ("tiktok-ads-plan", "tiktok-ads-budget", "tiktok-ads-tracking", "tiktok-ads-traffic"):
@@ -268,9 +268,11 @@ class Readme(unittest.TestCase):
             self.assertIn(needle, self.text, needle)
 
     def test_the_readme_states_what_works_today_and_what_does_not(self):
-        self.assertIn("**Later:**", self.text)
-        self.assertIn("approves AdCopilot's API access", self.text)
-        self.assertIn("There is no date", self.text)
+        self.assertIn("**Not read:** your TikTok ad account. It does not read your TikTok ad account", self.text)
+        self.assertIn("It does not read your TikTok ad account. Every change is proposed first and made only on your yes.",
+                      self.text)
+        self.assertNotIn(" approves ", self.text)
+        self.assertNotIn("**Later:**", self.text)
 
 
 if __name__ == "__main__":

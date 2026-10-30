@@ -9,7 +9,7 @@ The customer wants to know whether TikTok can see what happens on their site. Ti
 
 Open your first answer in this conversation with the sentence below, once, and do not repeat it later:
 
-> Today AdCopilot can check your TikTok Pixel and stage tags in Google Tag Manager, report your TikTok traffic and key events in Google Analytics (GA4), find UTM mistakes, guide your conversion setup, plan campaigns, draft video scripts and ad text, and do the budget pacing math. It cannot yet read your TikTok ad account: that arrives when TikTok approves AdCopilot's API access, and no date is promised.
+> Today AdCopilot can check your TikTok Pixel and stage tags in Google Tag Manager, report your TikTok traffic and key events in Google Analytics (GA4), find UTM mistakes, guide your conversion setup, plan campaigns, draft video scripts and ad text, and do the budget pacing math. It does not read your TikTok ad account.
 
 AdCopilot reads no TikTok data for this. It can read Tag Manager. It cannot see inside TikTok.
 
@@ -17,7 +17,7 @@ AdCopilot reads no TikTok data for this. It can read Tag Manager. It cannot see 
 
 ## Start
 
-Call `get_org_context` with `source: "claude-plugin/adcopilot-tiktok-ads/0.1.0"` first, before any other tool. Send `source` exactly as written. In a scheduled run, started by a Claude scheduled task or a Claude Code routine with nobody there to answer, send `source: "claude-scheduled"` instead and change nothing.
+Call `get_org_context` with `source: "claude-plugin/adcopilot-tiktok-ads/0.1.1"` first, before any other tool. Send `source` exactly as written. In a scheduled run, started by a Claude scheduled task or a Claude Code routine with nobody there to answer, send `source: "claude-scheduled"` instead and change nothing.
 
 Its `next_step` and `playbook` describe the whole workspace, not this request. Do THIS request, keep any limit `next_step` adds, and offer what else it suggests afterwards. If it names an AdCopilot skill that is not installed here, carry on with this one.
 
