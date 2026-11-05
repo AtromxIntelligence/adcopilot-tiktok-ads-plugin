@@ -15,7 +15,7 @@ Open your first answer in this conversation with the sentence below, once, and d
 
 ## Start
 
-Call `get_org_context` with `source: "claude-plugin/adcopilot-tiktok-ads/0.1.1"` first, before any other tool. Send `source` exactly as written. In a scheduled run, started by a Claude scheduled task or a Claude Code routine with nobody there to answer, send `source: "claude-scheduled"` instead and change nothing.
+Call `get_org_context` with `source: "claude-plugin/adcopilot-tiktok-ads/0.1.2"` first, before any other tool. Send `source` exactly as written. In a scheduled run, started by a Claude scheduled task or a Claude Code routine with nobody there to answer, send `source: "claude-scheduled"` instead and change nothing.
 
 Use it for one thing only: the saved business profile, if there is one (what they sell, where, for whom). Its `next_step` and `playbook` describe the whole workspace, not this request. Do THIS request, keep any limit `next_step` adds, and offer what else it suggests afterwards. If it names an AdCopilot skill that is not installed here, carry on with this one. Read no ad account for this: nothing in a plan needs one.
 

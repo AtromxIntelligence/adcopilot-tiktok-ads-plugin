@@ -4,7 +4,7 @@ TikTok Ads help in your AI client, through AdCopilot. Today it checks your TikTo
 
 Made by Atromx Intelligence (https://adcopilot.cloud). Not affiliated with or endorsed by TikTok. TikTok and TikTok Ads are trademarks of their owner. This plugin is not related to other products named AdCopilot.
 
-The plugin is free (MIT). The AdCopilot connector is a hosted service: Free plan available; paid plans on https://adcopilot.cloud/pricing.
+The plugin is MIT licensed. The AdCopilot connector it brings is a hosted service, so you need an AdCopilot account to use it.
 
 ## What it does today
 
@@ -66,7 +66,7 @@ Four skills, which Claude draws on when the conversation calls for them:
 - Delete anything. None of these skills has a delete tool to use.
 - Change anything without your yes. Every change is proposed first, with what it changes and how to undo it.
 - Read or change your TikTok ad account. That is the "Not read" line above.
-- Ask for your TikTok password or access token.
+- Ask for your TikTok password or sign-in details.
 - Quote benchmarks or promise results. Every number is a tool's number, one you gave it, or arithmetic on yours with the working shown.
 
 ## Platform facts, checked 23 October 2026
@@ -77,12 +77,22 @@ The Pixel steps follow TikTok's published Tag Manager template and Google's Anal
 
 The plugin is instructions only: it runs no code and sends nothing anywhere itself. The AdCopilot connector at mcp.adcopilot.cloud reads and, on your yes, writes your Google products through Google's APIs with your Google sign-in. Neither the plugin nor the connector contacts TikTok. Privacy policy: https://adcopilot.cloud/privacy. Terms: https://adcopilot.cloud/terms.
 
+## Example prompts
+
+After you sign in, ask in your own words. For example:
+
+- "Check whether my TikTok Pixel is installed in Google Tag Manager, and which events it tracks."
+- "How much TikTok traffic reached my site last month, and how many key events did it bring in Google Analytics?"
+- "Plan a TikTok campaign for my business, draft the video scripts, and check my budget pace if I give you the figures."
+
 ## Support
 
 - Something wrong with the plugin (a command, a skill, this README): [open an issue here](https://github.com/AtromxIntelligence/adcopilot-tiktok-ads-plugin/issues).
 - Something wrong with the connector (sign-in, a tool call, your account): support@adcopilot.cloud.
 
 ## Version
+
+**0.1.2 (2026-11-05)** Changes nothing you use. The plugin folder now holds only the files Claude loads.
 
 **0.1.1 (2026-10-31, written against AdCopilot v2.44.0, live since 2026-10-22)** Text only: every sentence about your TikTok ad account now says only that it does not read it. The skills, commands, tools and connector are as in 0.1.0.
 
@@ -91,7 +101,3 @@ The plugin is instructions only: it runs no code and sends nothing anywhere itse
 ## Licence
 
 MIT. Copyright Atromx Intelligence Private Limited. See [LICENSE](LICENSE).
-
-## What CI runs
-
-Two workflows run on every push to `main` and every pull request, and neither reads a secret. `checks.yml` installs Claude Code from npm at a pinned version, runs `claude plugin validate --strict` on the plugin and its manifest, checks that the manifests parse and every skill and command has a name and a description, runs the structural tests in `tests/`, and checks that no download-and-execute pattern is in the repository and that the manifest version is not behind the latest tag. `leak-check.yml` runs gitleaks over every commit, from its published container image pinned by digest.

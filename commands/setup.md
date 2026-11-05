@@ -7,7 +7,7 @@ Open your first answer with the sentence below, once:
 
 > Today AdCopilot can check your TikTok Pixel and stage tags in Google Tag Manager, report your TikTok traffic and key events in Google Analytics (GA4), find UTM mistakes, guide your conversion setup, plan campaigns, draft video scripts and ad text, and do the budget pacing math. It does not read your TikTok ad account.
 
-Then call `get_org_context` with `source: "claude-plugin/adcopilot-tiktok-ads/0.1.1"`, before any other tool, and take from its answer alone which Google products are connected. Send `source` exactly as written. In a scheduled run, started by a Claude scheduled task or a Claude Code routine with nobody there to answer, send `source: "claude-scheduled"` instead and change nothing. Its `next_step` and `playbook` describe the whole workspace: keep any limit `next_step` adds, and say what else it suggests only after this answer.
+Then call `get_org_context` with `source: "claude-plugin/adcopilot-tiktok-ads/0.1.2"`, before any other tool, and take from its answer alone which Google products are connected. Send `source` exactly as written. In a scheduled run, started by a Claude scheduled task or a Claude Code routine with nobody there to answer, send `source: "claude-scheduled"` instead and change nothing. Its `next_step` and `playbook` describe the whole workspace: keep any limit `next_step` adds, and say what else it suggests only after this answer.
 
 For the two products this plugin uses:
 
