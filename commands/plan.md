@@ -1,5 +1,4 @@
 ---
-name: plan
 description: Plan a TikTok Ads campaign and draft video scripts and ad text, written by Claude from your answers, with no TikTok account read.
 ---
 
