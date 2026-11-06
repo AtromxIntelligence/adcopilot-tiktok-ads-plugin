@@ -1,5 +1,4 @@
 ---
-name: check
 description: Check the TikTok Pixel in Google Tag Manager and TikTok traffic and key events in Google Analytics (GA4), then say what to fix first.
 ---
 

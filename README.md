@@ -35,7 +35,7 @@ There is nothing to add by hand: the plugin registers the connector for you.
 /mcp
 ```
 
-The last step opens the connector list. Choose `adcopilot` and sign in. The plugin registers the connector at `https://mcp.adcopilot.cloud/mcp` for you, so there is no `claude mcp add` step.
+The last step opens the connector list. Choose `adcopilot` and sign in. The plugin registers the connector at `https://mcp.adcopilot.cloud/mcp` for you.
 
 ### Then, on every surface
 
@@ -63,7 +63,7 @@ Four skills, which Claude draws on when the conversation calls for them:
 ## What it will not do
 
 - Publish Tag Manager. Changes are staged in the "AdCopilot" workspace, and you publish.
-- Delete anything. None of these skills has a delete tool to use.
+- Delete anything. The skills write only to Tag Manager, and AdCopilot's Tag Manager tools have no delete.
 - Change anything without your yes. Every change is proposed first, with what it changes and how to undo it.
 - Read or change your TikTok ad account. That is the "Not read" line above.
 - Ask for your TikTok password or sign-in details.
@@ -89,10 +89,11 @@ After you sign in, ask in your own words. For example:
 
 - Something wrong with the plugin (a command, a skill, this README): [open an issue here](https://github.com/AtromxIntelligence/adcopilot-tiktok-ads-plugin/issues).
 - Something wrong with the connector (sign-in, a tool call, your account): support@adcopilot.cloud.
+- A security problem: email support@adcopilot.cloud.
 
 ## Version
 
-**0.1.2 (2026-11-05)** Changes nothing you use. The plugin folder now holds only the files Claude loads.
+**0.1.2 (2026-11-05)** The plugin folder holds only the files Claude loads. `/adcopilot-tiktok-ads:setup` spots a connector added by hand.
 
 **0.1.1 (2026-10-31, written against AdCopilot v2.44.0, live since 2026-10-22)** Text only: every sentence about your TikTok ad account now says only that it does not read it. The skills, commands, tools and connector are as in 0.1.0.
 

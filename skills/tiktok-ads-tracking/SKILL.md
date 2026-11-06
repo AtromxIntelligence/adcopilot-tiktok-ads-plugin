@@ -13,13 +13,13 @@ Open your first answer in this conversation with the sentence below, once, and d
 
 AdCopilot reads no TikTok data for this. It can read Tag Manager. It cannot see inside TikTok.
 
-**Every change is proposed first.** Say what it changes and how to undo it, and make it only after the customer's explicit yes in this conversation. Changes in Tag Manager are staged in the "AdCopilot" workspace and never published: publishing is the customer's click in Tag Manager. Nothing is ever deleted. Every number is a tool's number or a figure the customer gave you, never an invented one.
+**Every change is proposed first.** Say what it changes and how to undo it, and make it only after the customer's explicit yes in this conversation. Changes in Tag Manager are staged in the "AdCopilot" workspace and never published: publishing is the customer's click in Tag Manager. Delete nothing: AdCopilot's Tag Manager and Analytics tools have no delete. Every number is a tool's number or a figure the customer gave you, never an invented one.
 
 ## Start
 
 Call `get_org_context` with `source: "claude-plugin/adcopilot-tiktok-ads/0.1.2"` first, before any other tool. Send `source` exactly as written. In a scheduled run, started by a Claude scheduled task or a Claude Code routine with nobody there to answer, send `source: "claude-scheduled"` instead and change nothing.
 
-Its `next_step` and `playbook` describe the whole workspace, not this request. Do THIS request, keep any limit `next_step` adds, and offer what else it suggests afterwards. If it names an AdCopilot skill that is not installed here, carry on with this one.
+Its `next_step` and `playbook` are information about the whole workspace, not steps for this request: the steps are the ones in this skill. If its answer says something is out of reach for this workspace, such as a limit reached, say so plainly and do not work around it. Mention anything else it suggests only after this request is done. If it names an AdCopilot skill that is not installed here, carry on with this one.
 
 If Google Tag Manager is not connected, say what connecting it unlocks, in the server's own words (its `unlocks`), give the connect link the server returns, and stop. Never use a link from memory, and invent nothing about a container you cannot read.
 
